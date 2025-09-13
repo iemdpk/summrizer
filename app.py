@@ -50,8 +50,10 @@ def email_dialog():
                         # Save to database
                         insert_result = client["llm"]["chat"].insert_one({
                             "task": extracted_text,
-                            "context": "Summarize the document into a concise summary highlighting key objectives",
-                            "required": "Provide a short, clear summary suitable for quick review.",
+                            # "context": "Summarize the document into a concise summary highlighting key objectives",
+                            # "required": "Provide a short, clear summary suitable for quick review.",
+                            "context": "Analyze the extracted document text and generate a concise summary formatted as an HTML fragment with inline CSS, suitable for embedding directly into an email. Focus on the main objectives, key insights, and essential takeaways.",
+                            "required": "Return only an HTML fragment (no markdown, no code fences). Structure: <div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\"> containing: (1) a heading <h2 style=\"color:#2c3e50; font-size:18px;\"> with a one-line executive summary, (2) a short paragraph <p style=\"margin:8px 0;\"> with 1–2 sentence overview, (3) an unordered list <ul style=\"margin:8px 0; padding-left:18px;\"> of 3–5 concise key findings, and (4) a paragraph <p style=\"margin:8px 0; font-weight:bold;\"> with a one-line actionable recommendation. Keep it short (80–200 words).",
                             "email": user_email,
                             "filename": st.session_state.uploaded_file_name,
                             "status": False,
