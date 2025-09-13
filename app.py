@@ -9,6 +9,7 @@ import PyPDF2
 from io import BytesIO
 from component.db import client
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
+from component.db import client
 
 # A function to extract text from a PDF file
 def extract_pdf_text(pdf_file):
@@ -54,7 +55,8 @@ def email_dialog():
                             "email": user_email,
                             "filename": st.session_state.uploaded_file_name,
                             "status": False,
-                            "timestamp": datetime.now()
+                            "timestamp": datetime.now(),
+                            "sendEmail":False,
                         })
                         
                         st.success(f"✅ File uploaded successfully!")
