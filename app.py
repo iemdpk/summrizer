@@ -58,6 +58,7 @@ def email_dialog():
                             "filename": st.session_state.uploaded_file_name,
                             "status": False,
                             "timestamp": datetime.now(),
+                            "streaming":False
                             "sendEmail":False,
                         })
                         
